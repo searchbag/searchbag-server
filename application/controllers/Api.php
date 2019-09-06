@@ -44,25 +44,6 @@ class Api extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	/* 회원가입 API */
-	public function join() {
-		$this->error_log("[/api/join] ENTER");
-		$_POST = json_decode(file_get_contents('php://input'), true);
-
-		$this->load->model('User');
-
-		$result = $this->User->insert(array(
-			'id' => $_POST['id'],
-			'pw' => md5($_POST['pw']),
-			'name' => $_POST['name'],
-			'gender' => $_POST['gender'],
-			'birth' => $_POST['birth']
-		));
-
-		$this->error_log("[/api/join] EXIT");
-		echo json_encode($result);
-	}
-
 	/* 측정하기 API */
 	public function measure() {
 
